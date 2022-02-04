@@ -26,19 +26,23 @@
 <br/>
 <div id="processosWipo">
 	<h4>Processos WIPO</h4><br/>
-	<input type="text" placeholder="Número Processo" id="txtConsWIPO"/>
+	<label for="numeroPublicacao">Número Processo: </label>
+	<input type="text" id="txtConsWIPO"/>
 	<input type="button" id="btnConsWIPO" value="Buscar" title="Buscar Processos site WIPO"/>
 </div>
 
 <div id="processosDaniel">
 	<h4>Processos</h4>
-	<input type="text" placeholder="Número Processo" id="txtProcessoConsDaniel"/><br/><br/>
-	<input type="text" placeholder="Requerente" id="txtRequerenteConsDaniel" size="60"/><br/><br/>
+	<label for="numeroPublicacao">Número Processo: </label>
+	<input type="text" id="txtProcessoConsDaniel"/><br/><br/>
+	<label for="numeroPublicacao">Requerente: </label>
+	<input type="text" id="txtRequerenteConsDaniel" size="60"/><br/><br/>
 	<input type="button" id="btnConsDaniel" value="Pesquisar" title="Pesquisar Processos Cadastrados"/>
 	
 </div>
 
 <div id="processosWipoDetail">
+	<br/>
 	<h4>Processos WIPO Detalhes</h4><br/>
 	
 		<label for="numeroPublicacao">Nº de Publicação: </label>
@@ -61,6 +65,7 @@
 </div>
 
 <div id="processosDanielDetail">
+	<br/>
 	<h4>Processos detalhes</h4><br/><br/>
 	<div id="tbProcesos">
 	</div>
@@ -145,7 +150,7 @@ $(document).ready(function(){
 			 }
 	
 		}else{
-			alert('Informe o processo para consultar!');
+			alert('Informe o número do processo para consultar!');
 		}
 		
 		
@@ -193,7 +198,7 @@ $(document).ready(function(){
 			 }
 	
 		}else{
-			alert('Informe o numero publicacao ou requernte para consultar!');
+			alert('Informe o numero de processo ou requerente para consultar!');
 		}
 		
 		
@@ -283,12 +288,20 @@ function criarTabelaProcessos(arrayJson){
 	 tabela+='<th>Titulo</th>';
 	 tabela+='</tr>';
 	 tabela+='</thead>';
+	 
+	 
 	 for (var j = 0; j < arrayJson.length; j++) {
+		 
+		 var dtPub = new Date(arrayJson[j].dtPublicacao);
+
+		 var strDtPub = dtPub.getDate()+
+	     "/"+(dtPub.getMonth()+1)+
+	     "/"+dtPub.getFullYear()
 		 
 		 tabela+=' <tr>  ';
 		 tabela+=' <td>'+arrayJson[j].numeroPublicacao+'</td> ';
 		 tabela+=' <td>'+arrayJson[j].numeroPedidoInternacional+'</td> ';
-		 tabela+=' <td>'+arrayJson[j].dtPublicacao+'</td> ';
+		 tabela+=' <td>'+strDtPub+'</td> ';
 		 tabela+=' <td>'+arrayJson[j].requerentes+'</td> ';
 		 tabela+=' <td>'+arrayJson[j].titulo+'</td> ';
 		 tabela+=' </tr> ';
