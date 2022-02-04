@@ -19,8 +19,8 @@
 <h2>Processos APP (Avaliação TI - JAVA - Analista Senior - Candidato: Sergio Weber)</h2>
 <br/>
 <form id="frmmenu"></form>
-	<input type="button" id="btnWIPO" value="Cadastrar Processos WIPO" title="Consultar/Cadastrar Processos site WIPO"/>
-	<input type="button" id="btnDaniel" value="Pesquisar Processos" title="Pesquisar Processos Cadastrados "/>
+	<input type="button" id="btnWIPO" value="Questão 1 - Cadastrar Processos WIPO" title="Consultar/Cadastrar Processos site WIPO"/>
+	<input type="button" id="btnDaniel" value="Questão 2 - Pesquisar Processos" title="Pesquisar Processos Cadastrados "/>
 </form>
 <br/>
 <br/>
