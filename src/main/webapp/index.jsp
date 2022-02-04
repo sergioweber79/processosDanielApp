@@ -1,7 +1,7 @@
 <!-- Sergio Weber -->
 <html>
 <head>
-<title>Processos Daniel APP (Candidato: Sergio Weber)</title>
+<title>Processos Daniel APP (Avaliação TI - JAVA - Analista Senior - Candidato: Sergio Weber)</title>
 <meta charset="utf-8"/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -15,37 +15,49 @@
 
 </head>
 <body>
-<h2>Processos Daniel APP (Candidato: Sergio Weber)</h2>
+<center>
+<h2>Processos APP (Avaliação TI - JAVA - Analista Senior - Candidato: Sergio Weber)</h2>
 <br/>
 <form id="frmmenu"></form>
-	<input type="button" id="btnWIPO" value="Processos WIPO" title="Consultar/Cadastrar Processos site WIPO"/>
-	<input type="button" id="btnDaniel" value="Consultar Processos" title="Consultar Processos Cadastrados "/>
+	<input type="button" id="btnWIPO" value="Cadastrar Processos WIPO" title="Consultar/Cadastrar Processos site WIPO"/>
+	<input type="button" id="btnDaniel" value="Pesquisar Processos" title="Pesquisar Processos Cadastrados "/>
 </form>
 <br/>
 <br/>
 <div id="processosWipo">
 	<h4>Processos WIPO</h4><br/>
-	<input type="text" placeholder="Processo WIPO" id="txtConsWIPO"/>
-	<input type="button" id="btnConsWIPO" value="Consultar" title="Consultar Processos site WIPO"/>
+	<input type="text" placeholder="Número Processo" id="txtConsWIPO"/>
+	<input type="button" id="btnConsWIPO" value="Buscar" title="Buscar Processos site WIPO"/>
 </div>
 
 <div id="processosDaniel">
 	<h4>Processos</h4>
-	<input type="text" placeholder="Processo Cadastrado" id="txtProcessoConsDaniel"/><br/><br/>
-	<input type="text" placeholder="Requerente" id="txtRequerenteConsDaniel"/><br/><br/>
-	<input type="button" id="btnConsDaniel" value="Consultar" title="Consultar Processos"/>
+	<input type="text" placeholder="Número Processo" id="txtProcessoConsDaniel"/><br/><br/>
+	<input type="text" placeholder="Requerente" id="txtRequerenteConsDaniel" size="60"/><br/><br/>
+	<input type="button" id="btnConsDaniel" value="Pesquisar" title="Pesquisar Processos Cadastrados"/>
 	
 </div>
 
 <div id="processosWipoDetail">
 	<h4>Processos WIPO Detalhes</h4><br/>
-	<label for="numeroPublicacao">numeroPublicacao</label> <input type="text" id="numeroPublicacao"/><br/><br/>
-	<label for="numneroPedidoInternacional">numneroPedidoInternacional</label> <input type="text" id="numeroPedidoInternacional"/><br/><br/>
-	<label for="numneroPedidoInternacional">dtPublicacao</label> <input type="text" id="dtPublicacao"/><br/><br/>
-	<label for="numneroPedidoInternacional">requerentes</label> <input type="text" id="requerentes" size="200"/><br/><br/>
-	<label for="numneroPedidoInternacional">titulo</label> <input type="text" id="titulo" size="200"/><br/><br/>
-	<input type="button" id="btnSalvarWIPO" value="Salvar" title="Salvar Processos site WIPO"/>
 	
+		<label for="numeroPublicacao">Nº de Publicação: </label>
+		<input type="text" id="numeroPublicacao"/><br/><br/>
+		
+	
+		<label for="numneroPedidoInternacional">Nº Pedido Internacional:</label>
+		<input type="text" id="numeroPedidoInternacional"/><br/><br/>
+	
+		<label for="numneroPedidoInternacional">Data Publicação:</label> 
+		<input type="text" id="dtPublicacao"/><br/><br/>
+	
+		<label for="numneroPedidoInternacional">Requerentes:</label> 
+		<input type="text" id="requerentes" size="200"/><br/><br/>
+	
+		<label for="numneroPedidoInternacional">Título: </label>
+		<input type="text" id="titulo" size="200"/><br/><br/>
+	
+	<input type="button" id="btnSalvarWIPO" value="Salvar" title="Salvar Processos site WIPO"/>
 </div>
 
 <div id="processosDanielDetail">
@@ -54,7 +66,7 @@
 	</div>
 </div>
 
-
+</center>
 </body>
 <script type="text/javascript">
 
@@ -66,6 +78,17 @@ function escondeTodasDivs(){
 	
 	$("#processosWipoDetail").hide();
 	$("#processosDanielDetail").hide();
+	
+	limpaCampos();
+}
+
+function limpaCampos(){
+	
+	$('#txtProcessoConsDaniel').val('');
+	$('#txtRequerentesConsDaniel').val('');
+	$('#txtConsWIPO').val('');
+	
+	document.getElementById("tbProcesos").innerHTML = '';
 }
 
 $(document).ready(function(){
@@ -78,6 +101,8 @@ $(document).ready(function(){
 		$("#processosWipo").show();
 		$("#processosDaniel").hide();
 		$("#processosDanielDetail").hide();
+		
+		limpaCampos();
 	});
 	
 	$("#btnDaniel").on('click', function(){
@@ -85,11 +110,10 @@ $(document).ready(function(){
 		$("#processosWipoDetail").hide();
 		$("#processosDaniel").show();
 		
-		
+		limpaCampos();
 	});
 	
 	$("#btnConsWIPO").on('click', function(){
-		
 		
 
 		if ($('#txtConsWIPO').val()){
@@ -132,6 +156,7 @@ $(document).ready(function(){
 	$("#btnConsDaniel").on('click', function(){
 		
 		
+		
 		var url=null;
 		if ($('#txtProcessoConsDaniel').val() && $('#txtRequerenteConsDaniel').val()){
 			url='http://localhost:8080/processosDanielApi/processodaniel/numeropublicacao/'+$('#txtProcessoConsDaniel').val()+'/requerentes/'+$('#txtRequerenteConsDaniel').val();
@@ -168,7 +193,7 @@ $(document).ready(function(){
 			 }
 	
 		}else{
-			alert('Informe o numero ou requernte para consultar!');
+			alert('Informe o numero publicacao ou requernte para consultar!');
 		}
 		
 		
