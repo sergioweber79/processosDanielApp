@@ -125,7 +125,7 @@ $(document).ready(function(){
 			var retorno=null;
 			
 			 $.ajax({
-		         url:  'http://localhost:8080/processosDanielApi/processowipo/wipo/'+$('#txtConsWIPO').val(),
+		         url:  '/processosDanielApi/processowipo/wipo/'+$('#txtConsWIPO').val(),
 		         method: "GET",
 		         success:    function(data) {
 		        	 			retorno= data;
@@ -164,11 +164,11 @@ $(document).ready(function(){
 		
 		var url=null;
 		if ($('#txtProcessoConsDaniel').val() && $('#txtRequerenteConsDaniel').val()){
-			url='http://localhost:8080/processosDanielApi/processodaniel/numeropublicacao/'+$('#txtProcessoConsDaniel').val()+'/requerentes/'+$('#txtRequerenteConsDaniel').val();
+			url='/processosDanielApi/processodaniel/numeropublicacao/'+$('#txtProcessoConsDaniel').val()+'/requerentes/'+$('#txtRequerenteConsDaniel').val();
 		}else if ($('#txtProcessoConsDaniel').val()){
-			url='http://localhost:8080/processosDanielApi/processodaniel/numeropublicacao/'+$('#txtProcessoConsDaniel').val()
+			url='/processosDanielApi/processodaniel/numeropublicacao/'+$('#txtProcessoConsDaniel').val()
 		}else if ($('#txtRequerenteConsDaniel').val()){
-			url='http://localhost:8080/processosDanielApi/processodaniel/requerentes/'+$('#txtRequerenteConsDaniel').val()
+			url='/processosDanielApi/processodaniel/requerentes/'+$('#txtRequerenteConsDaniel').val()
 		}
 		if (url){
 			var retorno=null;
@@ -242,7 +242,7 @@ $(document).ready(function(){
 				var retorno=null;
 				
 				 $.ajax({
-			         url:  'http://localhost:8080/processosDanielApi/processodaniel/add',
+			         url:  '/processosDanielApi/processodaniel/add',
 			         data: djson,
 			         method: "POST",
 			         success:    function(data) {
